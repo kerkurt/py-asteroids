@@ -39,6 +39,13 @@ def main():
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit(0)
+
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    asteroid.split()
+                    shot.kill()
         pygame.display.flip()
         dt = clock.tick(60) / 1000.0  # Limit to 60 FPS
         # print(f"Delta time for this frame: {dt:.4f} seconds")
